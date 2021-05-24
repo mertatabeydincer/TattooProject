@@ -1,0 +1,124 @@
+﻿@model TattooProject.ViewModels.UserModel
+
+@{
+    ViewBag.Title = "Signup";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="signup.css">
+    <link href="~/Content/signup.css" rel="stylesheet" />
+    <title>TattooCu</title>
+</head>
+
+
+<body>
+    <section id="header" class="jumbotron text-center">
+        <h1 class="display-3">SIGN UP</h1>
+        <p class="lead">Do you already have an account?</p>
+        <a href="~/User/Login" class="btn btn-primary">LOGIN</a>
+        <a href="~/Home/Index" class="btn btn-danger">HOME</a>
+    </section>
+
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="jumbotron justify-content-center">
+
+            <h1 class="text-center">Create An Account</h1>
+
+            @if (string.IsNullOrEmpty(ViewBag.SuccessMessage))
+            {
+                using (Html.BeginForm("UserSignup", "User", FormMethod.Post))
+                {
+                    @Html.ValidationSummary()
+                    <div class="form-group">
+                        <label class="info" for="name" id="labelname">Name:</label><br>
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", autocomplete = "off" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class=" info" for="surname">Surname:</label><br>
+                        @Html.TextBoxFor(model => model.Surname, new { @class = "form-control", autocomplete = "off" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender" id="labelgender">Gender:</label><br>
+                        <table style="width:100%" cellpadding="4">
+                            <tr>
+                                <td style="width:30px;"><div>@Html.RadioButtonFor(model => model.Gender, "M", new { @class = "form-control", autocomplete = "off" })</div></td>
+                                <td>Male</td>
+                            </tr>
+                            <tr>
+                                <td><div>@Html.RadioButtonFor(model => model.Gender, "F", new { @class = "form-control", autocomplete = "off" })</div></td>
+                                <td>Female</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e-mail" id="labele-mail">E-mail:</label><br>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", autocomplete = "off" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label><br>
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control", autocomplete = "off" })
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Confirm Password:</label><br>
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", autocomplete = "off" })
+                    </div>
+                    <div class="form-group">
+                        <label class="info" for="Address" id="labelAddress">Address:</label><br>
+                        @Html.TextBoxFor(model => model.UserAddress, new { @class = "form-control", autocomplete = "off" })
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Send" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div style="font-size: 16px;">
+                    <center>
+                        <img src="~/Content/Images/icon_success.png" style="width: 60px" /><br /><br />
+                        @ViewBag.SuccessMessage
+                    </center>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
+

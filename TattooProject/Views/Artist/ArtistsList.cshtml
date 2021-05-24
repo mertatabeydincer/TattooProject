@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+@model List<TattooProject.Models.Artist>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link href="~/Content/bar.css" rel="stylesheet" />
+    <link href="~/Content/artists.css" rel="stylesheet" />
+    <title>TattooCu</title>
+    <style>
+
+
+
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+            left: 167px;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            height: 37px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+            .searchTerm:focus {
+                color: #00B4CC;
+            }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap {
+            width: 30%;
+            position: inherit;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+
+<body id="artists">
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md fixed-top">
+
+        <a class="navbar-brand btn btn-danger" href="landing_page_guest.html">Home</a>
+
+        <div class="d-md-none d-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">@Utiilities.Name @Utiilities.SurName<span class="caret"></span></a>
+
+                    <ul class="pl-1 dropdown-menu bg-dark">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/User/BookingList" class="nav-link">Bookings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="landing_page_guest.html" class="nav-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsed-items"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsed-items">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="~/Artist/ArtistsList" class="nav-link">Artists</a>
+                </li>
+                <li class="nav-item">
+                    <a href="~/Artist/StudioList" class="nav-link">Studio</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-none d-md-block">
+            <ul class=" navbar-nav navbar-right">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">@Utiilities.Name @Utiilities.SurName<span class="caret"></span></a>
+
+                        <ul class="dropdown-menu bg-dark mt-2">
+                            <li class="nav-item">
+                                <a href="~/User/BookingList" class="nav-link">Bookings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="landing_page_guest.html" class="nav-link">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" placeholder="Which Artist ?" id="searchtxt" name="searchtxt">
+            <button type="submit" class="searchButton" onclick="search()">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="d-md-none d-flex">
+        <br><br><br><br><br><br><br><br><br><br>
+    </div>
+
+    <div class="container">
+        <h3 class="mt-5">Artists:</h3>
+        <div id="Artists" class="row pt-4 rounded">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <a href="https://images.pexels.com/photos/3657575/pexels-photo-3657575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+                            <img class="card-img-top p-1  rounded"
+                                 src="https://images.pexels.com/photos/3657575/pexels-photo-3657575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                 alt="">
+                        </a>
+
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @*<a href="~/Artist/ArtistProfile/@item.ArtistID"> @item.Name @item.Surname</a>*@
+                                @Html.ActionLink(item.Name + " " + item.Surname, "ArtistProfile", "Artist", new { id = item.ArtistID }, null)
+                            </h5>
+
+                            <h6 class="card-subtitle mb-2 text-muted">Studio: Independent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Gender: @item.Gender</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Experience: @item.Experience</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Expertise Area: @item.Expertise_Area</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                                corrupti quam magnam!
+                                Veniam, dolorum facere?
+                                Commodi, ut. Et, itaque quam!
+                            </p>
+                            @*<a href="~/User/Login" class="btn btn-outline-success btn-sm">Book</a>*@
+                            @Html.ActionLink("Booking", "ArtistBooking", new { id = item.ArtistID })
+                            @*<a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>*@
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+
+    <div>
+        <br><br><br>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/artist.js"></script>
+    <script>
+        function search() {
+            var id = document.getElementById("searchtxt").value;
+            var url = '@Url.Action("ArtistsList", "Artist", new { id = "-1"})';
+            url = url.replace("-1", id);
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+
+</html>

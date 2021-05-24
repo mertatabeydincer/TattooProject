@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+@model  TattooProject.ViewModels.VMArtist
+<head>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+    <link href="~/Content/theme.css" rel="stylesheet" />
+    <link href="~/Content/theme-custom.css" rel="stylesheet" />
+    <link href="~/Content/default.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <script src="~/Scripts/artist.js" type="text/javascript"></script>
+    <link href="~/Content/artists.css" rel="stylesheet" />
+    <title>TattooCu</title>
+</head>
+
+
+<body>
+    @using (Html.BeginForm("ArtistProfile", "Artist", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md fixed-top">
+
+            <a class="navbar-brand btn btn-danger" href="landing_page_guest.html">Home</a>
+
+            <div class="d-md-none d-flex">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">@Utiilities.Name @Utiilities.SurName<span class="caret"></span></a>
+
+                        <ul class="pl-1 dropdown-menu bg-dark">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="~/User/BookingList" class="nav-link">Bookings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="landing_page_guest.html" class="nav-link">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsed-items"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsed-items">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="~/Artist/ArtistsList" class="nav-link">Artists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Artist/StudioList" class="nav-link">Studio</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-none d-md-block">
+                <ul class=" navbar-nav navbar-right">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">@Utiilities.Name @Utiilities.SurName<span class="caret"></span></a>
+
+                            <ul class="dropdown-menu bg-dark mt-2">
+                                <li class="nav-item">
+                                    <a href="~/User/BookingList" class="nav-link">Bookings</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="landing_page_guest.html" class="nav-link">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </nav>
+
+        <section role="main">
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="thumb-info mb-md">
+                                <img src="/UserPhoto/!logged-user.jpg" class="rounded img-responsive" style="display: block; max-width: 100%; height: auto;">
+                                <div class="thumb-info-title">
+                                    <span class="thumb-info-inner">@Model.Name @Model.Surname</span>
+                                    <span class="thumb-info-type">@Model.Studios</span>
+                                </div>
+                            </div>
+                            <hr class="dotted short">
+                            <h4 class="text-muted">About</h4>
+                            <p>@Model.Description</p>
+
+                            <div class="form-group">
+                                <label class="col-md-6 control-label" for="inputSuccess">Give Point Artist</label>
+                                <div class="col-md-6">
+                                    @Html.HiddenFor(m => m.tabPage, new { Value = 1 })
+                                    @Html.DropDownListFor(m => m.Point, Model.PuanList, new { @class = "form-group" })
+                                    @if (Model.PointGive == true)
+                                    {
+                                        <button class="btn btn-primary">Send</button>
+
+                                    }
+                                </div>
+                            </div>
+                            <p style="margin:10px">Artist Point AVG:@Model.Point</p>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-8 col-lg-8">
+                    <div class="tabs">
+                        <ul class="nav nav-tabs tabs-primary">
+                            <li class="active">
+                                <a href="#overview" data-toggle="tab">Works</a>
+                            </li>
+                            <li>
+                                <a href="#comment" data-toggle="tab">Comments</a>
+                            </li>
+                            <li>
+                                <a href="#edit" data-toggle="tab">Profil</a>
+                            </li>
+                            <li>
+                                <a href="#woks" data-toggle="tab">Works Add</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="overview" class="tab-pane active">
+
+                                <div class="timeline timeline-simple mt-xlg mb-md">
+                                    <div class="tm-body">
+                                        <div class="tm-title">
+                                            <h3 class="h5 text-uppercase">My Works</h3>
+                                        </div>
+                                        <ol class="tm-items">
+                                            @foreach (var item in Model.ArtistWorkList)
+                                            {
+                                                <li>
+                                                    <div class="tm-box">
+                                                        <p class="text-muted mb-none">7 months ago.</p>
+                                                        <p>
+                                                            @item.Description
+                                                        </p>
+                                                        <div class="thumbnail-gallery">
+                                                            <a class="img-thumbnail lightbox" href="~/Work/@item.WorkImageUrl" data-plugin-options='{ "type":"image" }'>
+                                                                <img class="img-responsive" width="215" src="~/Work/@item.WorkImageUrl">
+
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="comment" class="tab-pane">
+                                <h4 class="mb-md">Write Comment</h4>
+
+                                <section class="simple-compose-box mb-xlg">
+                                    <form method="get" action="/">
+                                        @Html.HiddenFor(m => m.tabPage, new { Value = 2 })
+                                        @Html.HiddenFor(m => m.ArtistID, new { value = Model.ArtistID })
+                                        @Html.TextAreaFor(m => m.Comments, new { rows = "1", @class = "data-plugin-textarea-autosize", placeholder = "What's on your mind?" })
+                                    </form>
+                                    <div class="compose-box-footer">
+
+                                        <ul class="compose-btn">
+                                            <li>
+                                                <button class="btn btn-primary">Post</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </section>
+
+
+
+                                <div class="timeline timeline-simple mt-xlg mb-md">
+                                    <div class="tm-body">
+                                        <div class="tm-title">
+                                            <h3 class="h5 text-uppercase">Your Comments</h3>
+                                        </div>
+                                        <ol class="tm-items">
+                                            @foreach (var item in Model.ArtistCommentList)
+                                            {
+                                                <li>
+                                                    <div class="tm-box">
+                                                        <p class="text-muted mb-none">@item.CDate</p>
+                                                        <p>
+                                                            @item.Description
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="edit" class="tab-pane">
+                                <form method="post" class="form-horizontal">
+                                    <h4 class="mb-xlg">Personal Information</h4>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileFirstName">Name</label>
+                                        <div class="col-md-8">
+                                            @Html.HiddenFor(m => m.tabPage, new { Value = 3 })
+                                            @Html.HiddenFor(m => m.ArtistID, new { value = Model.ArtistID })
+                                            @Html.TextBoxFor(m => m.Name, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileLastName">SurName</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Surname, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileAddress">Address</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Address, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">E-Mail</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">Username</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Username, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">Phone</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Phone, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">Studios</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Studios, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">Experience</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Experience, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">Description</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Description, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">RegistrationDate</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.RegistrationDate, new { @class = " form-group", type = "date" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">Expertise_Area</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.Expertise_Area, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+                                    @if (Model.ArtistID == Model.KullaniciID)
+                                    {
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="profileCompany">Status</label>
+                                            <div class="col-md-8">
+                                                <button class="btn btn-primary">Save</button>
+                                            </div>
+                                        </div>
+                                    }
+                                </form>
+                            </div>
+                            <div id="woks" class="tab-pane">
+                                <form method="post" class="form-horizontal">
+                                    <h4 class="mb-xlg">Personal Information</h4>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Yol<span class="required">*</span></label>
+                                        <div class="col-sm-8">
+                                            @Html.HiddenFor(m => m.tabPage, new { Value = 4 })
+                                            @Html.HiddenFor(m => m.ArtistID, new { value = Model.ArtistID })
+                                            @Html.TextBoxFor(m => m.File, new { type = "file" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Description</label>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(m => m.WorkDescription, new { @class = " form-group" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="profileCompany">Status</label>
+                                        <div class="col-md-8">
+                                            <button id="btnwork" name="btnwork" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    }
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
+
+    <script src="artist.js"></script>
+</body>
+
+</html>

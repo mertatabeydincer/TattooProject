@@ -1,0 +1,62 @@
+body {
+    display: block;
+    background-color: black;
+    background: url(https://images.pexels.com/photos/3657563/pexels-photo-3657563.jpeg?cs=srgb&dl=pexels-gabriel-lara-3657563.jpg&fm=jpg) center center no-repeat fixed;
+    background-size: cover;
+    background-color: transparent;
+}
+
+#mainNavbar .nav-link:hover {
+    color: white;
+}
+
+h1{
+    color: white;
+}
+
+h3{
+    color: white;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+    transition: background 500ms;
+}
+
+img.rounded-circle{
+    width: 15%;
+}
+
+#Tattoos h5.card-title{
+    margin-bottom: -0.5rem; 
+}
+
+#Tattoos.row{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#Artists.row{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#Studios.row{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#Articles.row{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+#content-table{
+margin-top: 5%;
+}
+
+#mainNavbar .li{
+    display: inline;
+}
+
+
+img:hover{
+    background-color: grey;
+}

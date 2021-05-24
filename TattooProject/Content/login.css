@@ -1,0 +1,14 @@
+﻿button {
+    background-color: transparent;
+}
+
+body {
+    background-image: url(https://images.pexels.com/photos/5235795/pexels-photo-5235795.jpeg?cs=srgb&dl=pexels-cottonbro-5235795.jpg&fm=jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#header {
+    background-color: rgba( 233, 236, 239, .5);
+}

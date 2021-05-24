@@ -1,0 +1,458 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+@using TattooProject.Models 
+@model Tuple<TattooProject.Models.User, List<TattooProject.Models.Artist>>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="landing_page_user.css">
+    <link href="~/Content/landing_page_user.css" rel="stylesheet" />
+    <title>TattooCu</title>
+
+</head>
+
+
+<body>
+
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md fixed-top">
+
+        <a class="navbar-brand btn btn-danger" href="landing_page_guest.html">Home</a>
+
+        <div class="d-md-none d-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">@Utiilities.Name @Utiilities.SurName<span class="caret"></span></a>
+
+                    <ul class="pl-1 dropdown-menu bg-dark">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/User/BookingList" class="nav-link">Bookings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="landing_page_guest.html" class="nav-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsed-items"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsed-items">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="~/Artist/ArtistsList" class="nav-link">Artists</a>
+                </li>
+                <li class="nav-item">
+                    <a href="~/Artist/StudioList" class="nav-link">Studio</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-none d-md-block">
+            <ul class=" navbar-nav navbar-right">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">@Utiilities.Name @Utiilities.SurName<span class="caret"></span></a>
+
+                        <ul class="dropdown-menu bg-dark mt-2">
+                            <li class="nav-item">
+                                <a href="~/User/BookingList" class="nav-link">Bookings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="landing_page_guest.html" class="nav-link">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="d-md-none d-flex">
+        <br><br><br>
+    </div>
+
+    <section id="content-table">
+        <div class="container">
+            <div class="row justify-content-start">
+                <h1 class="align-items-center display-5">Trending</h1>
+            </div>
+
+            <h3 class="mt-5">Tattoos:</h3>
+            <div id="Tattoos" class="row pt-4 rounded">
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="tattoos card-title">
+                                <a href="~/Artist/ArtistProfile">@Model.Item2[0].Name @Model.Item2[0].Surname</a>
+                            </h5>
+                        </div>
+                        <a href="https://www.tattoo.com/wp-content/uploads/files/field/image/1880.png">
+                            <img class="card-img-bottom p-1"
+                                 src="https://www.tattoo.com/wp-content/uploads/files/field/image/1880.png"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+
+                            <a href="" class="btn btn-outline-success btn-sm"><i class="far fa-thumbs-up">750</i></a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-thumbs-down">2</i></a>
+                            <a href="" class="btn btn-outline-info btn-sm"><i class="far fa-comments">7</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="tattoos card-title">
+                                <a href="~/Artist/ArtistProfile">@Model.Item2[1].Name @Model.Item2[1].Surname</a>
+                            </h5>
+                        </div>
+                        <a href="https://i2.wp.com/fiveshoutsout.com/wp-content/uploads/2018/12/42930365_701085740251646_1070483225371103123_n-5c197ba940227__700.jpg?fit=700%2C875&ssl=1">
+                            <img class="card-img-top p-1"
+                                 src="https://i2.wp.com/fiveshoutsout.com/wp-content/uploads/2018/12/42930365_701085740251646_1070483225371103123_n-5c197ba940227__700.jpg?fit=700%2C875&ssl=1"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+
+                            <a href="" class="btn btn-outline-success btn-sm"><i class="far fa-thumbs-up"></i>528</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-thumbs-down"></i>7</a>
+                            <a href="" class="btn btn-outline-info btn-sm"><i class="far fa-comments"></i>13</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="tattoos card-title">
+                                <a href="~/Artist/ArtistProfile">@Model.Item2[2].Name @Model.Item2[2].Surname</a>
+                            </h5>
+                        </div>
+                        <a href="https://i.pinimg.com/originals/80/98/8d/80988defc17b859274d56f441c48b1cc.jpg">
+                            <img class="card-img-top p-1"
+                                 src="https://i.pinimg.com/originals/80/98/8d/80988defc17b859274d56f441c48b1cc.jpg"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+
+                            <a href="" class="btn btn-outline-success btn-sm"><i class="far fa-thumbs-up"></i>283</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-thumbs-down">8</i></a>
+                            <a href="" class="btn btn-outline-info btn-sm"><i class="far fa-comments"></i>0</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end m-1 ">
+                <button class="btn btn-secondary btn-sm" href="">Show more</a>
+            </div>
+
+            <h3 class="mt-5">Artists:</h3>
+            <div id="Artists" class="row pt-4 rounded">
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <a href="http://static1.squarespace.com/static/53f23aa3e4b0aeb9e75e12ef/53f26fd8e4b009ac85d3349b/5fb3d7923863cc578f0c9524/1605729547441/4Y1A4381.jpg?format=1500w">
+                            <img class="card-img-top p-1  rounded"
+                                 src="http://static1.squarespace.com/static/53f23aa3e4b0aeb9e75e12ef/53f26fd8e4b009ac85d3349b/5fb3d7923863cc578f0c9524/1605729547441/4Y1A4381.jpg?format=1500w"
+                                 alt="">
+                        </a>
+
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="~/Artist/ArtistProfile">@Model.Item2[0].Name @Model.Item2[0].Surname</a>
+                            </h5>
+
+                            <h6 class="card-subtitle mb-2 text-muted">Studio: Independent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Gender: @Model.Item2[0].Gender</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Experience: @Model.Item2[0].Experience Years</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 4.8</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                                corrupti quam magnam!
+                                Veniam, dolorum facere?
+                                Commodi, ut. Et, itaque quam!
+                            </p>
+                            <a href="" class="btn btn-outline-success btn-sm">Book</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <a href="~/Artist/ArtistProfile">
+                            <img class="card-img-top p-1  rounded"
+                                 src="https://i.vimeocdn.com/portrait/5004073_640x640"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                <a href="~/Artist/ArtistProfile">
+                                    @Model.Item2[1].Name @Model.Item2[1].Surname
+                                </a>
+                            </h5>
+
+                            <h6 class="card-subtitle mb-2 text-muted">Studio: <a href="">Freak Tattoo</a></h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Gender: @Model.Item2[1].Gender</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Experience: @Model.Item2[1].Experience Years</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 3</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                                corrupti quam magnam!
+                                Veniam, dolorum facere?
+                                Commodi, ut. Et, itaque quam!
+                            </p>
+                            <a href="" class="btn btn-outline-success btn-sm">Book</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <a href="~/Artist/ArtistProfile">
+                            <img class="card-img-top p-1  rounded"
+                                 src="https://img-s3.onedio.com/id-5aa90f81956739261bcab815/rev-0/w-900/h-900/f-jpg/s-58fb890e409a80eaff969ace1ef07f1f80e68927.jpg"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                <a href="~/Artist/ArtistProfile">
+                                    @Model.Item2[2].Name @Model.Item2[2].Surname
+                                </a>
+                            </h5>
+
+                            <h6 class="card-subtitle mb-2 text-muted">Studio: <a href="">Instant Tattoo</a></h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Gender: @Model.Item2[2].Gender</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Experience: @Model.Item2[2].Experience Years</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 3</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                                corrupti quam magnam!
+                                Veniam, dolorum facere?
+                                Commodi, ut. Et, itaque quam!
+                            </p>
+                            <a href="" class="btn btn-outline-success btn-sm">Book</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end m-1 ">
+                <button class="btn btn-secondary btn-sm" href="">Show more</a>
+            </div>
+
+            <h3 class="mt-5">Studios:</h3>
+            <div id="Artists" class="row pt-4 rounded">
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <a href="~/Artist/ArtistProfile">
+                            <img class="card-img-top p-1  rounded"
+                                 src="https://s3.amazonaws.com/cdn.designcrowd.com/blog/40-Tattoo-Shop-Logos-to-Flesh-Out-Your-Brand/header-40-tattoo-shop-logos-to-flesh-out-your-brand-designcrowd.png"
+                                 alt="">
+                        </a>
+
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="">House of Ink</a>
+                            </h5>
+
+                            <h6 class="card-subtitle mb-2 text-muted">Location: <a href="">Kadikoy/Istanbul</a> </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Since: 2007</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 4.8</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                                corrupti quam magnam!
+                                Veniam, dolorum facere?
+                                Commodi, ut. Et, itaque quam!
+                            </p>
+                            <a href="" class="btn btn-outline-success btn-sm">Book</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <a href="https://s3.amazonaws.com/cdn.designcrowd.com/blog/40-Tattoo-Shop-Logos-to-Flesh-Out-Your-Brand/header-40-tattoo-shop-logos-to-flesh-out-your-brand-designcrowd.png">
+                            <img class="card-img-top p-1  rounded"
+                                 src="https://s3.amazonaws.com/cdn.designcrowd.com/blog/40-Tattoo-Shop-Logos-to-Flesh-Out-Your-Brand/header-40-tattoo-shop-logos-to-flesh-out-your-brand-designcrowd.png"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                <a href="">
+                                    Ink Master
+                                </a>
+                            </h5>
+
+                            <h6 class="card-subtitle mb-2 text-muted">Location: <a href="">Kadikoy/Istanbul</a> </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Since: 2018</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 4.8</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                                corrupti quam magnam!
+                                Veniam, dolorum facere?
+                                Commodi, ut. Et, itaque quam!
+                            </p>
+                            <a href="" class="btn btn-outline-success btn-sm">Book</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <a href="https://s3.amazonaws.com/cdn.designcrowd.com/blog/40-Tattoo-Shop-Logos-to-Flesh-Out-Your-Brand/header-40-tattoo-shop-logos-to-flesh-out-your-brand-designcrowd.png">
+                            <img class="card-img-top p-1  rounded"
+                                 src="https://s3.amazonaws.com/cdn.designcrowd.com/blog/40-Tattoo-Shop-Logos-to-Flesh-Out-Your-Brand/header-40-tattoo-shop-logos-to-flesh-out-your-brand-designcrowd.png"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                <a href="">
+                                    Brett Sayles
+                                </a>
+                            </h5>
+
+                            <h6 class="card-subtitle mb-2 text-muted">Location: <a href="">Kadikoy/Istanbul</a> </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Since: 1997</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 4.8</h6>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                                corrupti quam magnam!
+                                Veniam, dolorum facere?
+                                Commodi, ut. Et, itaque quam!
+                            </p>
+                            <a href="" class="btn btn-outline-success btn-sm">Book</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end m-1 ">
+                <button class="btn btn-secondary btn-sm" href="">Show more</a>
+            </div>
+
+
+            <h3 class="mt-5">Articles:</h3>
+            <div id="Articles" class="row pt-4 rounded">
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="">History of Tattoo</a>
+                            </h5>
+
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam porro laboriosam provident
+                                debitis eius, aperiam ex aspernatur maiores dolorum, quae asperiores, optio veniam
+                                nesciunt veritatis officiis saepe at doloremque laborum hic! Nam quo omnis molestiae
+                                itaque at quae, nesciunt nisi, illum minus explicabo perferendis, corrupti amet eum
+                                inventore? Necessitatibus, alias.
+                            </p>
+
+                            <a href="" class="btn btn-outline-primary btn-sm"><i class="far fa-thumbs-up">4968</i></a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-thumbs-down">136</i></a>
+                            <a href="" class="btn btn-outline-dark btn-sm"><i class="far fa-eye"></i>548621</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="">Evolution of Tattooing</a>
+                            </h5>
+
+                            <p>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem quam quisquam eos
+                                eveniet molestiae iste est mollitia voluptate, perspiciatis delectus numquam reiciendis
+                                nostrum fuga ullam et totam dignissimos. Non enim temporibus adipisci molestiae aliquam
+                                ut officiis at animi facere magni? Iure, libero omnis dolore fuga modi odio. Distinctio,
+                                laborum. Qui.
+                            </p>
+
+                            <a href="" class="btn btn-outline-primary btn-sm"><i class="far fa-thumbs-up"></i>565432</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-thumbs-down"></i>1234</a>
+                            <a href="" class="btn btn-outline-dark btn-sm"><i class="far fa-eye"></i>848621</i></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="">Tattoo and Health</a>
+                            </h5>
+
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium dolore deleniti iure
+                                eveniet excepturi in ratione ab architecto tenetur dicta rerum, consectetur debitis
+                                voluptatum facere at voluptatem neque corporis aliquid omnis fuga repellendus.
+                                Consequatur soluta consectetur distinctio tenetur? Autem dolorem cumque maiores labore
+                                omnis aliquid culpa vero impedit sunt tempora.
+                            </p>
+
+                            <a href="" class="btn btn-outline-primary btn-sm"><i class="far fa-thumbs-up"></i>565432</a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-thumbs-down"></i>1234</a>
+                            <a href="" class="btn btn-outline-dark btn-sm"><i class="far fa-eye"></i>5621</i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row justify-content-end m-1 ">
+                <button class="btn btn-secondary btn-sm" href="">Show more</a>
+            </div>
+
+    </section>
+
+
+    <div>
+        <br><br><br>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>

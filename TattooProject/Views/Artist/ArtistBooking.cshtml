@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewBag.Title = "ArtistBooking";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@model  TattooProject.Models.Booking
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+
+    <link href="~/Content/artists.css" rel="stylesheet" />
+    <title>TattooCu</title>
+</head>
+
+
+<body id="artists">
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md fixed-top">
+        
+        <a class="navbar-brand btn btn-danger" href="landing_page_guest.html">Home</a>
+        
+        <div class="d-md-none d-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">@Utiilities.Name @Utiilities.SurName<span class="caret"></span></a>
+
+                    <ul class="pl-1 dropdown-menu bg-dark">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/User/BookingList" class="nav-link">Bookings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="landing_page_guest.html" class="nav-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsed-items"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsed-items">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="~/Artist/ArtistsList" class="nav-link">Artists</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-none d-md-block">
+            <ul class=" navbar-nav navbar-right">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">@Utiilities.Name @Utiilities.SurName<span class="caret"></span></a>
+
+                        <ul class="dropdown-menu bg-dark mt-2">
+                            <li class="nav-item">
+                                <a href="~/User/BookingList" class="nav-link">Bookings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="landing_page_guest.html" class="nav-link">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="d-md-none d-flex">
+        <br><br><br><br><br><br><br><br><br><br>
+    </div>
+    @using (Html.BeginForm("ArtistBooking", "Artist", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="container">
+            <h3 class="mt-5">Booking:</h3>
+            <div id="Artists" class="row pt-4 rounded">
+
+                <div class="col-md-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="form-body">
+                                <form class="form-horizontal form-bordered">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" style="color:white">Date</label>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                @*<input id="date" data-plugin-masked-input data-input-mask="99/99/9999" placeholder="__/__/____" class="form-control">*@
+                                                @Html.TextBoxFor(m => m.bookingdate, new { @class = "form-control", required = "required", type = "date", placeholder = "__/__/____" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" style="color:white">Time</label>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                @Html.HiddenFor(m => m.auserid, new { Value = ViewBag.ArtistId })
+                                                @Html.TextBoxFor(m => m.time, new { @class = "form-control", required = "required", type = "time", placeholder = "__/__" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" style="color:white">Status</label>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <label class="col-md-9 control-label" style="color:white"> @ViewBag.Data</label>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-xs-12">
+                                            <button class="btn btn-success">Booking Save </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+        </div>
+
+    }
+        <div>
+            <br><br><br>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
+
+
+        <script src="~/Scripts/artist.js"></script>
+        <script>
+
+        </script>
+    </body>
+
+</html>

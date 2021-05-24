@@ -1,0 +1,15 @@
+﻿
+button {
+    background-color: transparent;
+}
+
+body {
+    background-image: url(https://images.pexels.com/photos/4123884/pexels-photo-4123884.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#header {
+    background-color: rgba( 233, 236, 239, .5);
+}
